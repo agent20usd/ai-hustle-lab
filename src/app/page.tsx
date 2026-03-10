@@ -1,9 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaNpm, FaPython, FaXTwitter } from "react-icons/fa6";
 import { SiDevdotto } from "react-icons/si";
-import { HiShieldCheck, HiCommandLine, HiCurrencyDollar, HiTrophy, HiPencilSquare, HiCpuChip, HiWrenchScrewdriver, HiLink, HiArrowRight, HiHeart } from "react-icons/hi2";
+import { HiShieldCheck, HiCommandLine, HiCurrencyDollar, HiTrophy, HiPencilSquare, HiCpuChip, HiWrenchScrewdriver, HiLink, HiArrowRight, HiHeart, HiCheck, HiChevronDown } from "react-icons/hi2";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -131,7 +132,7 @@ export default function Home() {
             name="quickenv-check"
             platform="npm"
             platformIcon={<FaNpm className="w-5 h-5 text-red-500" />}
-            description="Lightning-fast .env file validator. Compare .env vs .env.example, find missing vars, detect leaked secrets. Zero dependencies."
+            description="Lightning-fast .env file validator. Compare .env vs .env.example, find missing vars, detect leaked secrets."
             tests={31}
             tags={["CLI", "DevOps", "Security"]}
             install="npm install -g quickenv-check"
@@ -139,12 +140,19 @@ export default function Home() {
             registryUrl="https://www.npmjs.com/package/quickenv-check"
             registryLabel="npm"
             status="live"
+            features={[
+              "Compare .env against .env.example to find missing variables",
+              "Detect leaked secrets (API keys, tokens, passwords)",
+              "CI/CD mode with --strict flag (exit code 1 on issues)",
+              "JSON output for pipeline integration",
+              "Works with any .env file format",
+            ]}
           />
           <ToolCard
             name="quickenv-check"
             platform="PyPI"
             platformIcon={<FaPython className="w-5 h-5 text-yellow-400" />}
-            description="Python port of quickenv-check. Same features — .env validation, secret detection, CI mode. Built with zero deps."
+            description="Python port of quickenv-check. Same features — .env validation, secret detection, CI mode."
             tests={20}
             tags={["Python", "CLI", "Security"]}
             install="pip install quickenv-check"
@@ -152,6 +160,12 @@ export default function Home() {
             registryUrl="https://pypi.org/project/quickenv-check/"
             registryLabel="PyPI"
             status="pending"
+            features={[
+              "Full Python port of the Node.js version",
+              "Same validation and secret detection rules",
+              "pip install with zero external dependencies",
+              "Works in any Python 3.8+ environment",
+            ]}
           />
           <ToolCard
             name="deps-audit-cli"
@@ -165,12 +179,19 @@ export default function Home() {
             registryUrl="https://www.npmjs.com/package/deps-audit-cli"
             registryLabel="npm"
             status="live"
+            features={[
+              "Find deprecated packages before they break your build",
+              "Flag stale dependencies (no updates in 2+ years)",
+              "Detect copyleft and non-standard licenses",
+              "Batched concurrent registry checks for speed",
+              "--json and --strict flags for CI/CD pipelines",
+            ]}
           />
           <ToolCard
             name="todo-scan-cli"
             platform="npm"
             platformIcon={<FaNpm className="w-5 h-5 text-red-500" />}
-            description="Scan your codebase for TODO, FIXME, HACK, XXX, BUG, and NOTE comments. CI/CD ready with --strict and --json flags."
+            description="Scan your codebase for TODO, FIXME, HACK, XXX, BUG, and NOTE comments. CI/CD ready."
             tests={83}
             tags={["CLI", "Code Quality", "CI/CD"]}
             install="npx todo-scan-cli"
@@ -178,19 +199,35 @@ export default function Home() {
             registryUrl="https://www.npmjs.com/package/todo-scan-cli"
             registryLabel="npm"
             status="live"
+            features={[
+              "Scans all comment styles: //, #, /*, --, ;, %, <!--",
+              "Extracts author from TODO(name) patterns",
+              "Sort by file, tag, or line number",
+              "Custom tag filtering with --tags flag",
+              "Configurable ignore patterns for directories",
+              "--strict exits with code 1 if any TODOs found",
+            ]}
           />
           <ToolCard
             name="readme-lint-cli"
             platform="npm"
             platformIcon={<FaNpm className="w-5 h-5 text-red-500" />}
-            description="Lint your README.md for 13 quality rules — missing title, dead links, empty sections, TODO placeholders, and more."
+            description="Lint your README.md for 13 quality rules — missing titles, dead links, empty sections, and more."
             tests={82}
-            tags={["CLI", "Documentation", "CI/CD"]}
+            tags={["CLI", "Docs", "CI/CD"]}
             install="npx readme-lint-cli"
             github="https://github.com/agent20usd/readme-lint"
             registryUrl="https://www.npmjs.com/package/readme-lint-cli"
             registryLabel="npm"
             status="live"
+            features={[
+              "13 built-in rules: title, description, dead links, empty sections",
+              "Detects TODO/TBD/FIXME placeholders left in docs",
+              "Checks heading consistency (no skipped levels)",
+              "Auto-fix mode with --fix flag (trailing spaces, headings)",
+              "Configurable via .readmelintrc.json",
+              "3 severity levels: error, warning, info",
+            ]}
           />
         </motion.div>
       </section>
@@ -448,54 +485,89 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function ToolCard({
-  name, platform, platformIcon, description, tests, tags, install, github, status, registryUrl, registryLabel,
+  name, platform, platformIcon, description, tests, tags, install, github, status, registryUrl, registryLabel, features,
 }: {
-  name: string; platform: string; platformIcon: React.ReactNode; description: string; tests: number; tags: string[]; install: string; github: string; status: string; registryUrl: string; registryLabel: string;
+  name: string; platform: string; platformIcon: React.ReactNode; description: string; tests: number; tags: string[]; install: string; github: string; status: string; registryUrl: string; registryLabel: string; features?: string[];
 }) {
+  const [open, setOpen] = useState(false);
   return (
     <motion.div
       variants={fadeIn}
-      whileHover={{ scale: 1.02, borderColor: "rgba(249,115,22,0.4)" }}
-      className="border border-zinc-800 rounded-xl p-6 transition bg-zinc-950/50"
+      layout
+      onClick={() => setOpen(!open)}
+      className="border border-zinc-800 rounded-xl p-6 transition bg-zinc-950/50 cursor-pointer hover:border-zinc-700"
     >
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           {platformIcon}
           <h3 className="text-lg font-semibold">{name}</h3>
+          <span className="text-xs text-zinc-600">{platform}</span>
         </div>
-        <span className={`text-xs px-2 py-0.5 rounded-full ${
-          status === "live"
-            ? "bg-green-500/10 text-green-400 border border-green-500/20"
-            : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
-        }`}>
-          {status === "live" ? "Live" : "Pending"}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`text-xs px-2 py-0.5 rounded-full ${
+            status === "live"
+              ? "bg-green-500/10 text-green-400 border border-green-500/20"
+              : "bg-yellow-500/10 text-yellow-400 border border-yellow-500/20"
+          }`}>
+            {status === "live" ? "Live" : "Pending"}
+          </span>
+          <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
+            <HiChevronDown className="w-4 h-4 text-zinc-500" />
+          </motion.div>
+        </div>
       </div>
+
       <p className="text-zinc-400 text-sm mb-3">{description}</p>
-      <div className="flex items-center gap-2 mb-3 text-xs text-zinc-500">
-        <HiShieldCheck className="w-4 h-4 text-green-400" />
-        <span>{tests} tests passing</span>
+
+      <div className="flex items-center gap-3 text-xs text-zinc-500">
+        <span className="flex items-center gap-1"><HiShieldCheck className="w-4 h-4 text-green-400" /> {tests} tests</span>
         <span className="text-zinc-700">|</span>
         <span>Zero deps</span>
+        <span className="text-zinc-700">|</span>
+        <div className="flex gap-1">
+          {tags.map((tag) => (
+            <span key={tag} className="px-1.5 py-0.5 bg-zinc-800 text-zinc-400 rounded text-[10px]">
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {tags.map((tag) => (
-          <span key={tag} className="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded">
-            {tag}
-          </span>
-        ))}
-      </div>
-      <code className="block text-sm text-orange-400 bg-zinc-900 rounded-lg px-4 py-2 mb-3">
-        $ {install}
-      </code>
-      <div className="flex gap-4">
-        <a href={github} target="_blank" rel="noopener" className="text-sm text-zinc-500 hover:text-white transition flex items-center gap-1">
-          <FaGithub className="w-4 h-4" /> Source
-        </a>
-        <a href={registryUrl} target="_blank" rel="noopener" className="text-sm text-orange-400 hover:text-orange-300 transition flex items-center gap-1">
-          {registryLabel} <HiArrowRight className="w-3 h-3" />
-        </a>
-      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <div className="mt-4 pt-4 border-t border-zinc-800/50">
+              {features && features.length > 0 && (
+                <ul className="space-y-2 mb-4">
+                  {features.map((f, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
+                      <HiCheck className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <code className="block text-sm text-orange-400 bg-zinc-900 rounded-lg px-4 py-2 mb-4">
+                $ {install}
+              </code>
+              <div className="flex gap-4" onClick={(e) => e.stopPropagation()}>
+                <a href={github} target="_blank" rel="noopener" className="text-sm text-zinc-500 hover:text-white transition flex items-center gap-1">
+                  <FaGithub className="w-4 h-4" /> Source
+                </a>
+                <a href={registryUrl} target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-sm px-3 py-1 bg-orange-500/10 text-orange-400 rounded-md hover:bg-orange-500/20 transition">
+                  View on {registryLabel} <HiArrowRight className="w-3 h-3" />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
