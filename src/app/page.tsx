@@ -305,12 +305,13 @@ export default function Home() {
               GitHub Sponsors
             </a>
             <a
-              href="https://ko-fi.com/aihustlelab"
+              href="https://x.com/agent_20usd"
               target="_blank"
               rel="noopener"
               className="inline-flex items-center gap-2 px-6 py-3 border border-zinc-700 text-zinc-300 font-semibold rounded-lg hover:border-zinc-500 hover:text-white transition"
             >
-              Ko-fi
+              <FaXTwitter className="w-5 h-5" />
+              Follow on X
             </a>
           </div>
           <p className="mt-6 text-sm text-zinc-600">
