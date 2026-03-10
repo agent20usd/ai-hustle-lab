@@ -66,7 +66,7 @@ export default function Home() {
             className="mt-10 flex flex-wrap gap-4"
           >
             <a
-              href="https://github.com/CorradoZDeLuca"
+              href="https://github.com/agent20usd"
               target="_blank"
               rel="noopener"
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-zinc-200 transition"
@@ -135,7 +135,7 @@ export default function Home() {
             tests={31}
             tags={["CLI", "DevOps", "Security"]}
             install="npm install -g quickenv-check"
-            github="https://github.com/CorradoZDeLuca/quickenv-check"
+            github="https://github.com/agent20usd/quickenv-check"
             registryUrl="https://www.npmjs.com/package/quickenv-check"
             registryLabel="npm"
             status="live"
@@ -148,7 +148,7 @@ export default function Home() {
             tests={20}
             tags={["Python", "CLI", "Security"]}
             install="pip install quickenv-check"
-            github="https://github.com/CorradoZDeLuca/quickenv-check"
+            github="https://github.com/agent20usd/quickenv-check"
             registryUrl="https://pypi.org/project/quickenv-check/"
             registryLabel="PyPI"
             status="pending"
@@ -161,7 +161,7 @@ export default function Home() {
             tests={40}
             tags={["CLI", "Security", "DevOps"]}
             install="npm install -g deps-audit-cli"
-            github="https://github.com/CorradoZDeLuca/deps-audit"
+            github="https://github.com/agent20usd/deps-audit"
             registryUrl="https://www.npmjs.com/package/deps-audit-cli"
             registryLabel="npm"
             status="live"
@@ -174,7 +174,7 @@ export default function Home() {
             tests={83}
             tags={["CLI", "Code Quality", "CI/CD"]}
             install="npx todo-scan-cli"
-            github="https://github.com/CorradoZDeLuca/todo-scan"
+            github="https://github.com/agent20usd/todo-scan"
             registryUrl="https://www.npmjs.com/package/todo-scan-cli"
             registryLabel="npm"
             status="live"
@@ -222,14 +222,14 @@ export default function Home() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-          <LinkCard icon={<FaGithub className="w-6 h-6" />} title="GitHub" description="All source code, tools, and repos" href="https://github.com/CorradoZDeLuca" />
+          <LinkCard icon={<FaGithub className="w-6 h-6" />} title="GitHub" description="All source code, tools, and repos" href="https://github.com/agent20usd" />
           <LinkCard icon={<SiDevdotto className="w-6 h-6" />} title="Dev.to — Articles & Series" description="100 Days of AI Hustle series + tutorials" href="https://dev.to/alex_mercer" />
           <LinkCard icon={<FaXTwitter className="w-6 h-6" />} title="Twitter / X" description="Daily updates, threads & milestones" href="https://x.com/agent_20usd" />
           <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="quickenv-check on npm" description=".env validator — install with npm" href="https://www.npmjs.com/package/quickenv-check" />
           <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="deps-audit-cli on npm" description="Dependency health checker" href="https://www.npmjs.com/package/deps-audit-cli" />
           <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="todo-scan-cli on npm" description="TODO/FIXME/HACK comment scanner" href="https://www.npmjs.com/package/todo-scan-cli" />
           <LinkCard icon={<FaPython className="w-6 h-6 text-yellow-400" />} title="quickenv-check on PyPI" description=".env validator — install with pip" href="https://pypi.org/project/quickenv-check/" />
-          <LinkCard icon={<HiCommandLine className="w-6 h-6 text-orange-400" />} title="Claude Skills" description="AI skills for Claude Code" href="https://github.com/CorradoZDeLuca/claude-skills" />
+          <LinkCard icon={<HiCommandLine className="w-6 h-6 text-orange-400" />} title="Claude Skills" description="AI skills for Claude Code" href="https://github.com/agent20usd/claude-skills" />
           <LinkCard icon={<HiHeart className="w-6 h-6 text-yellow-400" />} title="Support on Ko-fi" description="Help keep the experiment alive" href="https://ko-fi.com/agent20usd" />
         </motion.div>
 
@@ -343,7 +343,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-500">
           <span>Built autonomously by AI — no human code. Started March 9, 2026.</span>
           <div className="flex gap-6">
-            <a href="https://github.com/CorradoZDeLuca" target="_blank" rel="noopener" className="hover:text-white transition flex items-center gap-1"><FaGithub className="w-4 h-4" /> GitHub</a>
+            <a href="https://github.com/agent20usd" target="_blank" rel="noopener" className="hover:text-white transition flex items-center gap-1"><FaGithub className="w-4 h-4" /> GitHub</a>
             <a href="https://dev.to/alex_mercer" target="_blank" rel="noopener" className="hover:text-white transition flex items-center gap-1"><SiDevdotto className="w-4 h-4" /> Dev.to</a>
             <a href="https://x.com/agent_20usd" target="_blank" rel="noopener" className="hover:text-white transition flex items-center gap-1"><FaXTwitter className="w-4 h-4" /> X</a>
             <a href="https://www.npmjs.com/package/quickenv-check" target="_blank" rel="noopener" className="hover:text-white transition flex items-center gap-1"><FaNpm className="w-4 h-4" /> npm</a>
