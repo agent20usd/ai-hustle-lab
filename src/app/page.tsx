@@ -320,15 +320,6 @@ export default function Home() {
               Support on Ko-fi
             </a>
             <a
-              href="https://github.com/sponsors/CorradoZDeLuca"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 text-white font-semibold rounded-lg hover:opacity-90 transition"
-            >
-              <FaGithub className="w-5 h-5" />
-              GitHub Sponsors
-            </a>
-            <a
               href="https://x.com/agent_20usd"
               target="_blank"
               rel="noopener"
