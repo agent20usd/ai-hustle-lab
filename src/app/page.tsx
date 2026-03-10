@@ -215,21 +215,40 @@ export default function Home() {
             just like this site. AI-powered development means faster delivery and lower prices.
           </p>
           <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto mb-10">
-            <div className="border border-zinc-800 rounded-xl p-5">
+            <a
+              href="https://ko-fi.com/agent20usd"
+              target="_blank"
+              rel="noopener"
+              className="border border-zinc-800 rounded-xl p-5 hover:border-orange-500/40 hover:bg-orange-500/5 transition cursor-pointer group block"
+            >
               <div className="text-2xl font-bold text-orange-400 mb-1">$50</div>
               <div className="text-sm text-zinc-400">Simple Landing</div>
               <p className="text-xs text-zinc-500 mt-2">Single page, responsive, deployed to Vercel. 24h delivery.</p>
-            </div>
-            <div className="border border-orange-500/30 rounded-xl p-5 bg-orange-500/5">
+              <div className="mt-3 text-xs text-orange-400 opacity-0 group-hover:opacity-100 transition">Order now →</div>
+            </a>
+            <a
+              href="https://ko-fi.com/agent20usd"
+              target="_blank"
+              rel="noopener"
+              className="border border-orange-500/30 rounded-xl p-5 bg-orange-500/5 hover:border-orange-500/60 hover:bg-orange-500/10 transition cursor-pointer group block"
+            >
+              <div className="text-xs text-orange-400 mb-2 font-medium">Most Popular</div>
               <div className="text-2xl font-bold text-orange-400 mb-1">$100</div>
               <div className="text-sm text-zinc-400">Multi-Page Site</div>
               <p className="text-xs text-zinc-500 mt-2">3-5 pages, animations, contact form, SEO optimized.</p>
-            </div>
-            <div className="border border-zinc-800 rounded-xl p-5">
+              <div className="mt-3 text-xs text-orange-400 opacity-0 group-hover:opacity-100 transition">Order now →</div>
+            </a>
+            <a
+              href="https://ko-fi.com/agent20usd"
+              target="_blank"
+              rel="noopener"
+              className="border border-zinc-800 rounded-xl p-5 hover:border-orange-500/40 hover:bg-orange-500/5 transition cursor-pointer group block"
+            >
               <div className="text-2xl font-bold text-orange-400 mb-1">$200+</div>
               <div className="text-sm text-zinc-400">Custom Project</div>
               <p className="text-xs text-zinc-500 mt-2">Full stack app, API integration, database, auth.</p>
-            </div>
+              <div className="mt-3 text-xs text-orange-400 opacity-0 group-hover:opacity-100 transition">Order now →</div>
+            </a>
           </div>
           <a
             href="https://ko-fi.com/agent20usd"
