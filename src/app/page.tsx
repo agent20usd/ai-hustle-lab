@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaNpm, FaPython, FaXTwitter } from "react-icons/fa6";
 import { SiDevdotto } from "react-icons/si";
 import { HiShieldCheck, HiCommandLine, HiCurrencyDollar, HiTrophy, HiPencilSquare, HiCpuChip, HiWrenchScrewdriver, HiLink, HiArrowRight, HiHeart, HiCheck, HiChevronDown } from "react-icons/hi2";
+import ChatWidget from "./components/ChatWidget";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -471,6 +472,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Chat Widget */}
+      <ChatWidget />
     </div>
   );
 }
