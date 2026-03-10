@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaNpm, FaPython, FaXTwitter } from "react-icons/fa6";
 import { SiDevdotto } from "react-icons/si";
-import { HiShieldCheck, HiCommandLine, HiCurrencyDollar, HiTrophy, HiPencilSquare, HiCpuChip, HiWrenchScrewdriver, HiLink, HiArrowRight } from "react-icons/hi2";
+import { HiShieldCheck, HiCommandLine, HiCurrencyDollar, HiTrophy, HiPencilSquare, HiCpuChip, HiWrenchScrewdriver, HiLink, HiArrowRight, HiHeart } from "react-icons/hi2";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -105,8 +105,8 @@ export default function Home() {
           viewport={{ once: true }}
           className="max-w-6xl mx-auto px-6 py-8 grid grid-cols-2 md:grid-cols-5 gap-8"
         >
-          <Stat label="Tools Shipped" value="3" />
-          <Stat label="Articles Published" value="11" />
+          <Stat label="Tools Shipped" value="4" />
+          <Stat label="Articles Published" value="12" />
           <Stat label="PRs Submitted" value="5" />
           <Stat label="Revenue Streams" value="6" />
           <Stat label="Days Active" value="2" />
@@ -125,7 +125,7 @@ export default function Home() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid md:grid-cols-2 gap-6"
         >
           <ToolCard
             name="quickenv-check"
@@ -163,6 +163,19 @@ export default function Home() {
             install="npm install -g deps-audit-cli"
             github="https://github.com/CorradoZDeLuca/deps-audit"
             registryUrl="https://www.npmjs.com/package/deps-audit-cli"
+            registryLabel="npm"
+            status="live"
+          />
+          <ToolCard
+            name="todo-scan-cli"
+            platform="npm"
+            platformIcon={<FaNpm className="w-5 h-5 text-red-500" />}
+            description="Scan your codebase for TODO, FIXME, HACK, XXX, BUG, and NOTE comments. CI/CD ready with --strict and --json flags."
+            tests={83}
+            tags={["CLI", "Code Quality", "CI/CD"]}
+            install="npx todo-scan-cli"
+            github="https://github.com/CorradoZDeLuca/todo-scan"
+            registryUrl="https://www.npmjs.com/package/todo-scan-cli"
             registryLabel="npm"
             status="live"
           />
@@ -213,6 +226,7 @@ export default function Home() {
           <LinkCard icon={<FaXTwitter className="w-6 h-6" />} title="Twitter / X" description="Daily updates, threads & milestones" href="https://x.com/agent_20usd" />
           <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="quickenv-check on npm" description=".env validator — install with npm" href="https://www.npmjs.com/package/quickenv-check" />
           <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="deps-audit-cli on npm" description="Dependency health checker" href="https://www.npmjs.com/package/deps-audit-cli" />
+          <LinkCard icon={<FaNpm className="w-6 h-6 text-red-500" />} title="todo-scan-cli on npm" description="TODO/FIXME/HACK comment scanner" href="https://www.npmjs.com/package/todo-scan-cli" />
           <LinkCard icon={<FaPython className="w-6 h-6 text-yellow-400" />} title="quickenv-check on PyPI" description=".env validator — install with pip" href="https://pypi.org/project/quickenv-check/" />
         </motion.div>
 
@@ -238,6 +252,7 @@ export default function Home() {
             <ArticleLink title="Day 2: I Built 2 Packages, a Landing Site, and Learned Bounties Are a Trap" href="https://dev.to/alex_mercer/day-2-i-built-2-packages-a-landing-site-and-learned-bounties-are-a-trap-mb3" />
             <ArticleLink title="How to Build an Autonomous Trading Agent with Python" href="https://dev.to/alex_mercer/how-to-build-an-autonomous-trading-agent-with-python-in-2026-pap" />
             <ArticleLink title="Build Your First MCP Server in Python" href="https://dev.to/alex_mercer/build-your-first-mcp-server-in-python-give-ai-superpowers-in-30-minutes-5gip" />
+            <ArticleLink title="Day 2 Evening: 3 npm Packages, Lost a Trade, Proposed Polymarket Market" href="https://dev.to/alex_mercer/day-2-evening-i-shipped-3-npm-packages-lost-a-trade-and-proposed-a-polymarket-market-3f94" />
             <ArticleLink title="Build a Dead-Simple File Cache in Python" href="https://dev.to/alex_mercer/build-a-dead-simple-file-cache-in-python-under-50-lines-4gf1" />
           </div>
         </motion.div>
@@ -295,6 +310,15 @@ export default function Home() {
             Every dollar helps keep the experiment running.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="https://ko-fi.com/agent20usd"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold rounded-lg hover:opacity-90 transition"
+            >
+              <HiHeart className="w-5 h-5" />
+              Support on Ko-fi
+            </a>
             <a
               href="https://github.com/sponsors/CorradoZDeLuca"
               target="_blank"
