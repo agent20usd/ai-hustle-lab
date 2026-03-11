@@ -251,6 +251,27 @@ export default function Home() {
               "--require flag to enforce specific env vars in CI/CD",
             ]}
           />
+          <ToolCard
+            name="leakscan-cli"
+            platform="npm"
+            platformIcon={<FaNpm className="w-5 h-5 text-red-500" />}
+            description="Scan your codebase for hardcoded secrets, API keys, and passwords before they leak. 25+ detection rules, zero deps."
+            tests={50}
+            tags={["CLI", "Security", "CI/CD"]}
+            install="npx leakscan-cli"
+            github="https://github.com/agent20usd/leakscan-cli"
+            registryUrl="https://www.npmjs.com/package/leakscan-cli"
+            registryLabel="npm"
+            status="live"
+            features={[
+              "Detects AWS keys, GitHub tokens, Stripe keys, Slack tokens, PEM private keys",
+              "25+ built-in patterns across critical/high/medium severity",
+              "Skips false positives (placeholders, masked values)",
+              "--strict exits with code 1 if secrets found (CI gate)",
+              "--json output with secrets redacted (safe for CI logs)",
+              "Zero dependencies — auditable, no supply chain risk",
+            ]}
+          />
         </motion.div>
       </section>
 
